@@ -6,15 +6,18 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { PlayerNameComponent } from '../components/player-name/player-name';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    PlayerNameComponent,
+
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
