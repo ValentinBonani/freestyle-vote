@@ -16,7 +16,7 @@ export class PlayerNameComponent {
 
   constructor() {
     console.log('Hello PlayerNameComponent Component');
-    this.text = 'Hello World';
+    this.text = 'Hello asdasdasd';
   }
 
 }
