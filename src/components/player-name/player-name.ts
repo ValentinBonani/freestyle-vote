@@ -1,22 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ChallengeProvider } from '../../providers/challenge/challenge';
+import { App } from 'ionic-angular';
 
-/**
- * Generated class for the PlayerNameComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
+import { BattleSelectorPage } from '../../pages/battle-selector/battle-selector';
+
 @Component({
   selector: 'player-name',
   templateUrl: 'player-name.html'
 })
 export class PlayerNameComponent {
 
-  text: string;
+  competitor:string;
+  number:number;
+  
+  constructor(
+    private challengeProvider:ChallengeProvider,
+    private app:App
+  ) {}
 
-  constructor() {
-    console.log('Hello PlayerNameComponent Component');
-    this.text = 'Hello asdasdasd';
+  clickContinue(){
+    this.challengeProvider.saveCompetitor(this.competitor);
+    if(this.challengeProvider.allCompetitorsLoaded()) this.app.getActiveNav().setRoot(BattleSelectorPage);
   }
+
+  @Input('competitorNumber') set competitorNumber (number:number){
+    this.competitor = "";
+    this.number = number + 1;
+  }
+
 
 }

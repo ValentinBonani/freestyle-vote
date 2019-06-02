@@ -7,12 +7,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PlayerNameComponent } from '../components/player-name/player-name';
+import { ChallengeProvider } from '../providers/challenge/challenge';
+import { BattleSelectorPage } from '../pages/battle-selector/battle-selector';
+import { BattleModesComponent } from '../components/battle-modes/battle-modes';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     PlayerNameComponent,
+    BattleModesComponent,
+    BattleSelectorPage
 
   ],
   imports: [
@@ -22,12 +27,14 @@ import { PlayerNameComponent } from '../components/player-name/player-name';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    BattleSelectorPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ChallengeProvider
   ]
 })
 export class AppModule {}

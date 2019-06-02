@@ -1,0 +1,5 @@
+<div *ngFor="let mode of challengeProvider.battleModes" class="custom-control custom-checkbox">
+  <input type="checkbox" class="custom-control-input" id="{{mode}}" checked>
+  <label  class="custom-control-label font-white" for="{{mode}}" >{{mode}}</label>
+</div>
+<button ion-button (click)="clickStart()" class="font-color-secondary continue-button" color="primary" type="submit">Comenzar Batalla</button>
