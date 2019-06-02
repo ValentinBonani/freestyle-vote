@@ -2,6 +2,7 @@
 <div class="flex align-center flex-column height-100">
   <div class="flex space-between align-center stretch" padding>
     <div *ngFor="let mode of challengeProvider.battleModes" class="custom-control flex custom-checkbox">
+        <div class="center">
           <div class="checkbox">
             <input class="check" type="checkbox" id="check"/>
             <label for="check"></label>
@@ -24,6 +25,7 @@
               <div class="ray"></div>
             </div>
           </div>
+        </div>
       <!-- <input type="checkbox" id="{{mode.name}}" [(ngModel)]="mode.state" checked> -->
       <label  class="font-white" for="{{mode.name}}">{{mode.name}}</label>
     </div>
