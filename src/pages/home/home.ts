@@ -17,7 +17,4 @@ export class HomePage {
     return this.challengeProvider.competitors.length;
   }
 
-  allCompetitorsLoaded(){
-    return this.challengeProvider.competitors.length >= 2;
-  }
 }

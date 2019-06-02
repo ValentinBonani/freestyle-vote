@@ -33,8 +33,20 @@ player-name {
 .font-color-secondary{
     color: $theme-color-2;
 }
+* {
+    font-size: 3rem;
+}
+
 
 .align-center{
     justify-content: center;
     align-items: center;
+}
+
+.stretch{
+    align-self: stretch;
+}
+
+.space-between{
+    justify-content: space-around;
 }

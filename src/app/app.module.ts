@@ -10,6 +10,7 @@ import { PlayerNameComponent } from '../components/player-name/player-name';
 import { ChallengeProvider } from '../providers/challenge/challenge';
 import { BattleSelectorPage } from '../pages/battle-selector/battle-selector';
 import { BattleModesComponent } from '../components/battle-modes/battle-modes';
+import { BattlePage } from '../pages/battle/battle';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BattleModesComponent } from '../components/battle-modes/battle-modes';
     HomePage,
     PlayerNameComponent,
     BattleModesComponent,
-    BattleSelectorPage
+    BattleSelectorPage,
+    BattlePage
 
   ],
   imports: [
@@ -28,7 +30,9 @@ import { BattleModesComponent } from '../components/battle-modes/battle-modes';
   entryComponents: [
     MyApp,
     HomePage,
-    BattleSelectorPage
+    BattleSelectorPage,
+    BattlePage
+
   ],
   providers: [
     StatusBar,

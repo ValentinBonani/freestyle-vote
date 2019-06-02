@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class ChallengeProvider {
 
   competitors:string[] = []
-  battleModes = ["Easy Mode", "Hard Mode", "Tematicas", "Personajes Contrapuestos", "4x4"]
+  battleModes = [{name: "Easy Mode", state: true}, {name: "Hard Mode",state: true}, {name: "Tematicas",state:true}, {name: "Personajes Contrapuestos",state:true}, {name: "4x4",state:true}]
 
   constructor() {}
 
