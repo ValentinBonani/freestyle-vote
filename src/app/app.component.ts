@@ -5,11 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { BattleSelectorPage } from '../pages/battle-selector/battle-selector';
+import { BattlePage } from '../pages/battle/battle';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = BattleSelectorPage;
+  rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

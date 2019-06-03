@@ -1,33 +1,11 @@
 
-<div class="flex align-center flex-column height-100">
-  <div class="flex space-between align-center stretch" padding>
-    <div *ngFor="let mode of challengeProvider.battleModes" class="custom-control flex custom-checkbox">
-        <div class="center">
-          <div class="checkbox">
-            <input class="check" type="checkbox" id="check"/>
-            <label for="check"></label>
-            <div class="rays">
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-              <div class="ray"></div>
-            </div>
-          </div>
-        </div>
-      <!-- <input type="checkbox" id="{{mode.name}}" [(ngModel)]="mode.state" checked> -->
-      <label  class="font-white" for="{{mode.name}}">{{mode.name}}</label>
+<div class="flex align-center flex-column space-around  height-100">
+  <div class="flex space-around align-center stretch baseline">
+    <div *ngFor="let mode of challengeProvider.battleModes" class="custom-control  align-center flex flex-1 height-100 space-between flex-column custom-checkbox">
+      <div class="flex baseline text-center align-center flex-1">
+        <label class="font-white" for="{{mode.name}}">{{mode.name}}</label>
+      </div>
+        <check-box [mode]="mode" ></check-box>
     </div>
   </div>
   <button ion-button (click)="clickStart()" class="font-color-secondary continue-button" color="primary" type="submit">Comenzar Batalla</button>

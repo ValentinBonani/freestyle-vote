@@ -11,6 +11,9 @@ import { ChallengeProvider } from '../providers/challenge/challenge';
 import { BattleSelectorPage } from '../pages/battle-selector/battle-selector';
 import { BattleModesComponent } from '../components/battle-modes/battle-modes';
 import { BattlePage } from '../pages/battle/battle';
+import { CheckBoxComponent } from '../components/check-box/check-box';
+import { BattlePointsDisplayComponent } from '../components/battle-points-display/battle-points-display';
+import { BattlePointsSelectorComponent } from '../components/battle-points-selector/battle-points-selector';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { BattlePage } from '../pages/battle/battle';
     HomePage,
     PlayerNameComponent,
     BattleModesComponent,
+    BattlePointsDisplayComponent,
+    BattlePointsSelectorComponent,
+    CheckBoxComponent,
     BattleSelectorPage,
     BattlePage
 

@@ -1,0 +1,11 @@
+battle-points-selector {
+    .parent{
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+    .font-medium{
+        span{
+            font-size: 3rem;
+        }
+    }
+}

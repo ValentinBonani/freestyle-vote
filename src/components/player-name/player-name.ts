@@ -28,5 +28,9 @@ export class PlayerNameComponent {
     this.number = number + 1;
   }
 
+  getPlayerTitle(){
+    return this.number === 1 ? "primer" : "segundo"
+  }
+
 
 }
