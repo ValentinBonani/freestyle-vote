@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ChallengeProvider } from '../../providers/challenge/challenge';
 import { BattlePage } from '../../pages/battle/battle';
 import { App } from 'ionic-angular';
+import { ModesProvider } from '../../providers/modes/modes';
 
 @Component({
   selector: 'battle-modes',
@@ -12,11 +12,12 @@ export class BattleModesComponent {
   text: string;
 
   constructor(
-    private challengeProvider:ChallengeProvider,
+    private modesProvider:ModesProvider,
     private app:App
   ) {}
 
   clickStart() {
+    this.modesProvider.selectNextMode();
     this.app.getActiveNav().setRoot(BattlePage);
   }
 }

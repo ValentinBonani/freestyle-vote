@@ -9,8 +9,8 @@ export class BattlePointsSelectorComponent {
 
   constructor(private challengeProvider:ChallengeProvider) {}
 
-  clickPointHandler(){
-    
+  clickPointHandler(value){
+    this.challengeProvider.pointBar(value);
   }
 
 }

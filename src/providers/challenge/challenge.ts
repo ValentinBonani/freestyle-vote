@@ -1,23 +1,52 @@
 import { Injectable } from '@angular/core';
+import { ModesProvider } from '../modes/modes';
 
 @Injectable()
 export class ChallengeProvider {
 
-  currentMode;
   points = [0,1,2,3,4]
   competitors:string[] = []
-  battleModes = [
-    { name: "Easy Mode", state: true },
-    { name: "Hard Mode", state: true },
-    { name: "Tematicas", state:true },
-    { name: "Personajes Contrapuestos", state:true },
-    { name: "4x4", state:true }
-  ]
+  currentBar = 0;
+  currentCompetitor = 0;
 
-  constructor() {}
+
+  constructor(private modesProvider:ModesProvider) {}
 
   startBattle(){
-    this.selectNextMode();
+    this.modesProvider.selectNextMode();
+  }
+
+  pointBar(value){
+    this.modesProvider.currentMode.points[this.currentCompetitor][this.currentBar] = value;
+    setTimeout(this.setNextBar,350);
+  }
+
+  selectLastBar(){
+    this.setLastBar();
+  }
+
+  selectNextBar(){
+    this.setNextBar();
+  }
+  
+
+  setNextBar = () => {
+    if(this.modesProvider.currentMode.solo && ((this.currentBar + 1) < this.modesProvider.currentMode.barsCount)){
+      this.currentBar++
+    } else if (this.modesProvider.currentMode.solo && ((this.currentBar + 1) === this.modesProvider.currentMode.barsCount)) {
+      this.currentBar = 0,
+      this.currentCompetitor++
+    }
+  }
+
+  setLastBar = () => {
+    if(this.modesProvider.currentMode.solo && ((this.currentBar) > 0)){
+      this.currentBar--
+    } else if (this.modesProvider.currentMode.solo && ((this.currentBar) === 0)) {
+      this.currentBar = 0,
+      this.currentCompetitor++
+    }
+
   }
 
   saveCompetitor(competitor){
@@ -28,8 +57,6 @@ export class ChallengeProvider {
     return this.competitors.length === 2;
   }
 
-  selectNextMode(){
-    this.currentMode = this.battleModes.find(mode => mode.state);
-  }
+
 
 }

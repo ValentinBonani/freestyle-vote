@@ -14,6 +14,7 @@ import { BattlePage } from '../pages/battle/battle';
 import { CheckBoxComponent } from '../components/check-box/check-box';
 import { BattlePointsDisplayComponent } from '../components/battle-points-display/battle-points-display';
 import { BattlePointsSelectorComponent } from '../components/battle-points-selector/battle-points-selector';
+import { ModesProvider } from '../providers/modes/modes';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { BattlePointsSelectorComponent } from '../components/battle-points-selec
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ChallengeProvider
+    ChallengeProvider,
+    ModesProvider
   ]
 })
 export class AppModule {}

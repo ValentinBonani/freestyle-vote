@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ChallengeProvider } from '../../providers/challenge/challenge';
+import { ModesProvider } from '../../providers/modes/modes';
 
 @Component({
   selector: 'battle-points-display',
@@ -7,6 +8,13 @@ import { ChallengeProvider } from '../../providers/challenge/challenge';
 })
 export class BattlePointsDisplayComponent {
 
-  constructor(private challengeProvider:ChallengeProvider) {}
+  constructor(
+    private challengeProvider:ChallengeProvider,
+    private modesProvider:ModesProvider
+  ) {}
+
+  getBarPoints(){
+    return this.modesProvider.currentMode.points[this.challengeProvider.currentCompetitor][this.challengeProvider.currentBar];
+  }
 
 }
