@@ -15,6 +15,7 @@ import { CheckBoxComponent } from '../components/check-box/check-box';
 import { BattlePointsDisplayComponent } from '../components/battle-points-display/battle-points-display';
 import { BattlePointsSelectorComponent } from '../components/battle-points-selector/battle-points-selector';
 import { ModesProvider } from '../providers/modes/modes';
+import { ModeStatsPage } from '../pages/mode-stats/mode-stats';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ModesProvider } from '../providers/modes/modes';
     BattlePointsSelectorComponent,
     CheckBoxComponent,
     BattleSelectorPage,
-    BattlePage
+    BattlePage,
+    ModeStatsPage,
 
   ],
   imports: [
@@ -38,7 +40,8 @@ import { ModesProvider } from '../providers/modes/modes';
     MyApp,
     HomePage,
     BattleSelectorPage,
-    BattlePage
+    BattlePage,
+    ModeStatsPage,
 
   ],
   providers: [

@@ -6,47 +6,31 @@ export class ChallengeProvider {
 
   points = [0,1,2,3,4]
   competitors:string[] = []
-  currentBar = 0;
   currentCompetitor = 0;
 
 
   constructor(private modesProvider:ModesProvider) {}
 
-  startBattle(){
+  startBattle() {
     this.modesProvider.selectNextMode();
   }
 
-  pointBar(value){
-    this.modesProvider.currentMode.points[this.currentCompetitor][this.currentBar] = value;
-    setTimeout(this.setNextBar,350);
+  switchCompetitor() {
+    if (this.currentCompetitor) this.currentCompetitor = 0;
+    else this.currentCompetitor = 1;
   }
 
-  selectLastBar(){
-    this.setLastBar();
+  pointBar(value) {
+    this.modesProvider.currentMode.points[this.currentCompetitor][this.modesProvider.currentBar] = value;
+    setTimeout(this.selectNextBar,350);
   }
 
-  selectNextBar(){
-    this.setNextBar();
-  }
-  
-
-  setNextBar = () => {
-    if(this.modesProvider.currentMode.solo && ((this.currentBar + 1) < this.modesProvider.currentMode.barsCount)){
-      this.currentBar++
-    } else if (this.modesProvider.currentMode.solo && ((this.currentBar + 1) === this.modesProvider.currentMode.barsCount)) {
-      this.currentBar = 0,
-      this.currentCompetitor++
-    }
+  selectLastBar = () => {
+    if (this.modesProvider.currentMode.setLastBar()) this.switchCompetitor()
   }
 
-  setLastBar = () => {
-    if(this.modesProvider.currentMode.solo && ((this.currentBar) > 0)){
-      this.currentBar--
-    } else if (this.modesProvider.currentMode.solo && ((this.currentBar) === 0)) {
-      this.currentBar = 0,
-      this.currentCompetitor++
-    }
-
+  selectNextBar = () => {
+    if (this.modesProvider.currentMode.setNextBar()) this.switchCompetitor()
   }
 
   saveCompetitor(competitor){

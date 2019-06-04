@@ -2,11 +2,12 @@
     <div class="flex baseline text-center space-around width-100">
         <ion-icon (click)="challengeProvider.selectLastBar()" class="align-self-center" color="white" name="arrow-dropleft"></ion-icon>
         <div>
-            <h1 class="font-white">Barra {{challengeProvider.currentBar + 1}}</h1>
+            <h1 class="font-white">Barra {{modesProvider.currentBar + 1}}</h1>
             <h3 class="font-white">{{modesProvider.currentMode.name}}</h3>
         </div>
         <ion-icon (click)="challengeProvider.selectNextBar()" class="align-self-center"  color="white" name="arrow-dropright"></ion-icon>
     </div>
     <input class="height-30 width-60 text-center font-big" type="text" disabled value="{{getBarPoints()}}">
     <h3 class="font-white">{{challengeProvider.competitors[challengeProvider.currentCompetitor]}}</h3>
+    <button ion-button (click)="checkScore()" class="font-white continue-button" color="primary" type="submit">Ver puntaje</button>
 </div>

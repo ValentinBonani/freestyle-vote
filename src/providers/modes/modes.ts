@@ -4,14 +4,65 @@ import { ModeInterface } from '../../interfaces/mode';
 
 @Injectable()
 export class ModesProvider {
+  
+  constructor() {}
+
+  currentBar = 0;
+  competitorFullyPointed = false;
+
+  thereAreMoreBars() {
+    return (this.currentBar + 1) < this.currentMode.barsCount;
+  }
+
+  thereAreLessBars() {
+    return this.currentBar > 0;
+  }
+
+  checkToChangeMode() {
+    if (!this.competitorFullyPointed) {
+      this.selectNextMode();
+      return false;
+    }
+    return true;
+  }
+
+  resetBars() {
+    this.currentBar = 0;
+    this.competitorFullyPointed = !this.competitorFullyPointed;
+    return this.checkToChangeMode();
+  }
+
+
+  continueBars(){
+    this.currentBar++;
+    return false;
+  }
+  backBars(){
+    this.currentBar--;
+    return false;
+  }
+  
+  setNextBarSolo = () => {
+    if(this.thereAreMoreBars()) return this.continueBars();
+    else return this.resetBars();
+  }
+
+  setLastBarSolo = () => {
+    if(this.thereAreLessBars()) return this.backBars();
+    else {
+      this.currentBar = this.currentMode.barsCount - 1;
+      return true;
+    } 
+  }
 
   easyMode: ModeInterface = {
     name: "Easy Mode",
     barsCount:6,
     state: true,
     points:[[0,0,0,0,0,0],[0,0,0,0,0,0]],
-    solo:true,
-    id:1
+    setNextBar:this.setNextBarSolo,
+    setLastBar:this.setLastBarSolo,
+    id:1,
   }
 
   hardMode: ModeInterface = {
@@ -19,8 +70,9 @@ export class ModesProvider {
     barsCount:6,
     state: true,
     points:[[0,0,0,0,0,0],[0,0,0,0,0,0]],
-    solo:true,
-    id:2
+    setNextBar:this.setNextBarSolo,
+    setLastBar:this.setLastBarSolo,
+    id:2,
   }
 
   thematic: ModeInterface = { 
@@ -28,8 +80,9 @@ export class ModesProvider {
     barsCount:6,
     state:true,
     points:[[0,0,0,0,0,0],[0,0,0,0,0,0]],
-    solo:true,
-    id:3
+    setNextBar:this.setNextBarSolo,
+    setLastBar:this.setLastBarSolo,
+    id:3,
   }
 
   opposingCharacters: ModeInterface = { 
@@ -37,8 +90,9 @@ export class ModesProvider {
     barsCount:6,
     state:true,
     points:[[0,0,0,0,0,0],[0,0,0,0,0,0]],
-    solo:false,
-    id:4
+    setNextBar:this.setNextBarSolo,
+    setLastBar:this.setLastBarSolo,
+    id:4,
   }
   
   freeStyle: ModeInterface = {
@@ -46,8 +100,9 @@ export class ModesProvider {
     barsCount:6,
     state:true,
     points:[[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]],
-    solo:false,
-    id:5
+    setNextBar:this.setNextBarSolo,
+    setLastBar:this.setLastBarSolo,
+    id:5,
   }
 
   fourByFour: ModeInterface = {
@@ -55,17 +110,19 @@ export class ModesProvider {
     barsCount:8,
     state:true,
     points:[[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]],
-    solo:false,
-    id:6
+    setNextBar:this.setNextBarSolo,
+    setLastBar:this.setLastBarSolo,
+    id:6,
   }
 
   currentMode: ModeInterface = {
     name:"",
     barsCount:6,
     state:null,
-    solo:null,
+    setNextBar:null,
     points:null,
-    id:0
+    setLastBar:this.setLastBarSolo,
+    id:0,
   };
   
   battleModes: ModeInterface[] = [
@@ -77,13 +134,13 @@ export class ModesProvider {
     this.fourByFour
   ]
 
-  constructor() {}
 
-  selectNextMode(){
-    this.currentMode = this.battleModes.find( mode => {
-      return mode.id > this.currentMode.id && mode.state
-    });
-    console.log(this.currentMode)
+  selectNextMode() {
+    this.currentMode = this.battleModes.find(this.nextActiveMode);
+  }
+
+  nextActiveMode = (mode) => {
+    return mode.id > this.currentMode.id && mode.state;
   }
 
 

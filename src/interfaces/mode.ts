@@ -3,6 +3,7 @@ export interface ModeInterface {
     name:string,
     state:boolean,
     points:number[][],
-    solo:boolean,
+    setNextBar:()=>boolean,
+    setLastBar:()=>boolean,
     barsCount:number
 }
