@@ -16,6 +16,7 @@ import { BattlePointsDisplayComponent } from '../components/battle-points-displa
 import { BattlePointsSelectorComponent } from '../components/battle-points-selector/battle-points-selector';
 import { ModesProvider } from '../providers/modes/modes';
 import { ModeStatsPage } from '../pages/mode-stats/mode-stats';
+import { PointsBarComponent } from '../components/points-bar/points-bar';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ModeStatsPage } from '../pages/mode-stats/mode-stats';
     BattleModesComponent,
     BattlePointsDisplayComponent,
     BattlePointsSelectorComponent,
+    PointsBarComponent,
     CheckBoxComponent,
     BattleSelectorPage,
     BattlePage,

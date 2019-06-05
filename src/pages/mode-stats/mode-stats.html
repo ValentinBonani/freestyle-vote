@@ -1,9 +1,11 @@
-<ion-header>
-  <ion-navbar color="primary">
-    <ion-title class="font-white">Stats</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-
+<ion-content>
+    <div class="flex">
+        <ion-icon (click)="goBack()" color="white" name="arrow-dropleft"></ion-icon>
+        <h4 class="font-white text-center">{{modesProvider.currentMode.name}}</h4>
+    </div>
+    <div class="flex flex-column space-around align-center flex-1">
+        <points-bar [competitor]="0"></points-bar>
+        <h4 class="font-white">VS</h4>
+        <points-bar [competitor]="1"></points-bar>
+    </div>
 </ion-content>

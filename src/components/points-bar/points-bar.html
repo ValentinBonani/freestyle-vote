@@ -1,0 +1,19 @@
+<h4 class="font-white text-center">{{challengeProvider.competitors[competitor]}}</h4>
+<div class="flex flex-1 space-around">
+    <div class="flex">
+        <div class="height-100 width-100 flex flex-column align-center space-around" *ngFor="let point of modesProvider.currentMode.points[competitor]; let i = index">
+            <h4 class="font-white">
+                Barra {{i+1}}
+            </h4>
+            <input class="height-100 width-60 text-center" disabled value="{{point}}" type="text">
+        </div>
+    </div>
+    <div class="flex">
+        <div class="height-100 width-100 flex flex-column align-center space-around" *ngFor="let point of [0,1,2]; let i = index">
+            <h4 class="font-white">
+                {{getExtraName(i)}}
+            </h4>
+            <input class="height-100 width-60 text-center" disabled value="{{point}}" type="text">
+        </div>
+    </div>
+</div>
