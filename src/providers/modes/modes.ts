@@ -9,6 +9,8 @@ export class ModesProvider {
 
   currentBar = 0;
   competitorFullyPointed = false;
+  displayExtras = false;
+  currentExtraBar = 0;
 
   thereAreMoreBars() {
     return (this.currentBar + 1) < this.currentMode.barsCount;
@@ -26,24 +28,44 @@ export class ModesProvider {
     return true;
   }
 
+  pointBar(currentCompetitor, value){
+    if(this.displayExtras) this.currentMode.extras[currentCompetitor][this.currentExtraBar] = value;
+    else this.currentMode.points[currentCompetitor][this.currentBar] = value;
+  }
+
+
   resetBars() {
     this.currentBar = 0;
+    this.displayExtras = true;
+    return false;
+  }
+
+  continueBars() {
+    this.currentBar++;
+    return false;
+  }
+
+  backBars() {
+    this.currentBar--;
+    return false;
+  }
+
+  resetExtras(){
+    this.currentExtraBar = 0;
+    this.displayExtras = false;
     this.competitorFullyPointed = !this.competitorFullyPointed;
     return this.checkToChangeMode();
   }
 
-
-  continueBars(){
-    this.currentBar++;
-    return false;
-  }
-  backBars(){
-    this.currentBar--;
-    return false;
+  continueExtras() {
+    this.currentExtraBar++;
+    if (this.currentExtraBar === 3) return this.resetExtras()
+    return false
   }
   
   setNextBarSolo = () => {
-    if(this.thereAreMoreBars()) return this.continueBars();
+    if (this.displayExtras) return this.continueExtras();
+    else if (this.thereAreMoreBars()) return this.continueBars();
     else return this.resetBars();
   }
 
@@ -60,6 +82,7 @@ export class ModesProvider {
     barsCount:6,
     state: true,
     points:[[0,0,0,0,0,0],[0,0,0,0,0,0]],
+    extras:[[0,0,0],[0,0,0]],
     setNextBar:this.setNextBarSolo,
     setLastBar:this.setLastBarSolo,
     id:1,
@@ -70,6 +93,7 @@ export class ModesProvider {
     barsCount:6,
     state: true,
     points:[[0,0,0,0,0,0],[0,0,0,0,0,0]],
+    extras:[[0,0,0],[0,0,0]],
     setNextBar:this.setNextBarSolo,
     setLastBar:this.setLastBarSolo,
     id:2,
@@ -80,6 +104,7 @@ export class ModesProvider {
     barsCount:6,
     state:true,
     points:[[0,0,0,0,0,0],[0,0,0,0,0,0]],
+    extras:[[0,0,0],[0,0,0]],
     setNextBar:this.setNextBarSolo,
     setLastBar:this.setLastBarSolo,
     id:3,
@@ -90,6 +115,7 @@ export class ModesProvider {
     barsCount:6,
     state:true,
     points:[[0,0,0,0,0,0],[0,0,0,0,0,0]],
+    extras:[[0,0,0],[0,0,0]],
     setNextBar:this.setNextBarSolo,
     setLastBar:this.setLastBarSolo,
     id:4,
@@ -100,6 +126,7 @@ export class ModesProvider {
     barsCount:6,
     state:true,
     points:[[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]],
+    extras:[[0,0,0],[0,0,0]],
     setNextBar:this.setNextBarSolo,
     setLastBar:this.setLastBarSolo,
     id:5,
@@ -110,6 +137,7 @@ export class ModesProvider {
     barsCount:8,
     state:true,
     points:[[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]],
+    extras:[[0,0,0],[0,0,0]],
     setNextBar:this.setNextBarSolo,
     setLastBar:this.setLastBarSolo,
     id:6,
@@ -120,8 +148,9 @@ export class ModesProvider {
     barsCount:6,
     state:null,
     setNextBar:null,
-    points:null,
     setLastBar:this.setLastBarSolo,
+    points:null,
+    extras:null,
     id:0,
   };
   

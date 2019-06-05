@@ -21,7 +21,7 @@ export class ChallengeProvider {
   }
 
   pointBar(value) {
-    this.modesProvider.currentMode.points[this.currentCompetitor][this.modesProvider.currentBar] = value;
+    this.modesProvider.pointBar(this.currentCompetitor, value)
     setTimeout(this.selectNextBar,350);
   }
 

@@ -7,7 +7,8 @@
         </div>
         <ion-icon (click)="challengeProvider.selectNextBar()" class="align-self-center"  color="white" name="arrow-dropright"></ion-icon>
     </div>
-    <input class="height-30 width-60 text-center font-big" type="text" disabled value="{{getBarPoints()}}">
+    <input *ngIf="!modesProvider.displayExtras" class="height-30 width-60 text-center font-big" type="text" disabled value="{{getBarPoints()}}" autofocus>
+    <display-extras *ngIf="modesProvider.displayExtras"></display-extras>
     <h3 class="font-white">{{challengeProvider.competitors[challengeProvider.currentCompetitor]}}</h3>
-    <button ion-button (click)="checkScore()" class="font-white continue-button" color="primary" type="submit">Ver puntaje</button>
+    <button ion-button (click)="checkScore()" class="font-white font- continue-button" color="primary" type="submit">Ver puntaje</button>
 </div>

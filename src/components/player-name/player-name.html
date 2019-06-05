@@ -2,7 +2,7 @@
   <div class="flex flex-column align-center width-50">
     <div class="form-group flex align-center flex-1 flex-column ">
       <h1 class="font-white text-center">Nombre del {{getPlayerTitle()}} competidor</h1>
-      <input name="name" [(ngModel)]="competitor" type="text" class="font-medium form-control" placeholder="Ingrese nombre" >
+      <input name="name" [(ngModel)]="competitor" type="text" class="font-medium form-control" placeholder="Ingrese nombre" autofocus>
     </div>
     <button ion-button (click)="clickContinue()" class=" font-white continue-button" color="primary" type="submit">Continuar</button>
   </div>

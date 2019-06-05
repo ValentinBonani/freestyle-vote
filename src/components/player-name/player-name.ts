@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { ChallengeProvider } from '../../providers/challenge/challenge';
 import { App } from 'ionic-angular';
 
