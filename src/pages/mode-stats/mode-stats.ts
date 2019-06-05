@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ModeStatsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ModesProvider } from '../../providers/modes/modes';
+import { ChallengeProvider } from '../../providers/challenge/challenge';
 
 @IonicPage()
 @Component({
@@ -15,11 +10,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ModeStatsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private modesProvider: ModesProvider,
+    private challengeProvider: ChallengeProvider
+    ) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ModeStatsPage');
-  }
-
+    goBack() {
+      this.navCtrl.pop();
+    }
 }
