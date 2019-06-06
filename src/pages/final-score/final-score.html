@@ -1,0 +1,20 @@
+<ion-content padding>
+    <div class="flex flex-column flex-1 height-100 space-around align-center">
+        <h4 class="font-white">Resultado Final</h4>
+        <div class="flex space-around width-100 align-center">
+            <div class="flex flex-column align-center">
+                <h4 class="font-white">{{challengeProvider.competitors[0]}}</h4>
+                <h4 class="font-white">{{modesProvider.getScore(0)}}</h4>
+            </div>
+            <h4 class="font-white">VS</h4>
+            <div class="flex flex-column align-center">
+                <h4 class="font-white">{{challengeProvider.competitors[1]}}</h4>
+                <h4 class="font-white">{{modesProvider.getScore(1)}}</h4>
+            </div>
+        </div>
+        <!--
+          <h4 class="font-white">Ganador: Vilob</h4>
+        -->
+        <button ion-button (click)="clickDetails()" class="font-white continue-button" color="primary" type="submit">Ver Detalle</button>
+    </div>
+</ion-content>

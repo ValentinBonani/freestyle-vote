@@ -18,6 +18,7 @@ import { ModesProvider } from '../providers/modes/modes';
 import { ModeStatsPage } from '../pages/mode-stats/mode-stats';
 import { DisplayExtrasComponent } from '../components/display-extras/display-extras';
 import { PointsBarComponent } from '../components/points-bar/points-bar';
+import { FinalScorePage } from '../pages/final-score/final-score';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PointsBarComponent } from '../components/points-bar/points-bar';
     BattleSelectorPage,
     BattlePage,
     ModeStatsPage,
+    FinalScorePage
 
   ],
   imports: [
@@ -46,6 +48,8 @@ import { PointsBarComponent } from '../components/points-bar/points-bar';
     BattleSelectorPage,
     BattlePage,
     ModeStatsPage,
+    FinalScorePage
+
 
   ],
   providers: [

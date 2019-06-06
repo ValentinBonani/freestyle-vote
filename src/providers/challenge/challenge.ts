@@ -11,6 +11,10 @@ export class ChallengeProvider {
 
   constructor(private modesProvider:ModesProvider) {}
 
+  getCompetitorScore(competitor){
+    return this.modesProvider.getScore(competitor);
+  }
+
   startBattle() {
     this.modesProvider.selectNextMode();
   }

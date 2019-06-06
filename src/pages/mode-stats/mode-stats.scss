@@ -1,5 +1,11 @@
 page-mode-stats {
-    .content{
+    .content {
         background-color: $theme-color-2;
+    }
+    .fixed {
+        position: fixed;
+    }
+    .padding-left {
+        padding-left: 20px;
     }
 }

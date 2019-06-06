@@ -1,6 +1,10 @@
 <ion-content padding>
-  <div class="flex height-100">
-    <battle-points-selector class="flex-basis-50"></battle-points-selector>
-    <battle-points-display class="flex-basis-50 height-100"></battle-points-display>
-  </div>
+    <div *ngIf="!modesProvider.allActiveModesFinished" class="flex height-100">
+        <battle-points-selector class="flex-basis-50"></battle-points-selector>
+        <battle-points-display class="flex-basis-50 height-100"></battle-points-display>
+    </div>
+    <div class="flex flex-1 flex-column align-center space-around height-100" *ngIf="modesProvider.allActiveModesFinished">
+        <h4 class="font-white">La Batalla Ha Terminado</h4>
+        <button ion-button (click)="clickCheckResult()" class="font-white continue-button" color="primary" type="submit">Ver Resultado</button>
+    </div>
 </ion-content>

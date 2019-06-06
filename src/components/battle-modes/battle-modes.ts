@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BattlePage } from '../../pages/battle/battle';
 import { App } from 'ionic-angular';
 import { ModesProvider } from '../../providers/modes/modes';
+import { ChallengeProvider } from '../../providers/challenge/challenge';
 
 @Component({
   selector: 'battle-modes',
@@ -9,15 +10,14 @@ import { ModesProvider } from '../../providers/modes/modes';
 })
 export class BattleModesComponent {
 
-  text: string;
-
   constructor(
     private modesProvider:ModesProvider,
+    private challengeProvider:ChallengeProvider,
     private app:App
   ) {}
 
   clickStart() {
-    this.modesProvider.selectNextMode();
+    this.challengeProvider.startBattle();
     this.app.getActiveNav().setRoot(BattlePage);
   }
 }

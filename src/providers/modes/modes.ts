@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ModeInterface } from '../../interfaces/mode';
+import { pointerCoord } from 'ionic-angular/umd/util/dom';
 
 
 @Injectable()
@@ -11,6 +12,7 @@ export class ModesProvider {
   competitorFullyPointed = false;
   displayExtras = false;
   currentExtraBar = 0;
+  allActiveModesFinished = false;
 
   thereAreMoreBars() {
     return (this.currentBar + 1) < this.currentMode.barsCount;
@@ -20,9 +22,15 @@ export class ModesProvider {
     return this.currentBar > 0;
   }
 
+  checkIfHasBattleFinished() {
+    if (this.selectNextMode())
+      this.allActiveModesFinished = true;
+  }
+
+
   checkToChangeMode() {
     if (!this.competitorFullyPointed) {
-      this.selectNextMode();
+      this.checkIfHasBattleFinished();
       return false;
     }
     return true;
@@ -165,11 +173,25 @@ export class ModesProvider {
 
 
   selectNextMode() {
-    this.currentMode = this.battleModes.find(this.nextActiveMode);
+    return this.currentMode = this.battleModes.find(this.nextActiveMode) || this.currentMode;
   }
 
   nextActiveMode = (mode) => {
     return mode.id > this.currentMode.id && mode.state;
+  }
+
+  countModePoints(mode:ModeInterface, competitor){
+    let points = mode.points[competitor].reduce( (previusPoints, currentPoint) => previusPoints + currentPoint);
+    return points + mode.extras[competitor].reduce( (previusPoints, currentPoint) => previusPoints + currentPoint);
+  }
+
+  getScore(competitor){
+    let activeModes = this.battleModes.filter(mode => mode.state);
+    let points = 0;
+    activeModes.forEach( (mode) => {
+      points = points + this.countModePoints(mode,competitor);
+    })
+    return points;
   }
 
 
